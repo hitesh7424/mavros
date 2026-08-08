@@ -337,7 +337,7 @@ static void url_parse_host(
   }
 
   port.assign(sep_it + 1, host.end());
-  port_out = parse_int_in_range(port, 1, std::numeric_limits<uint16_t>::max(), "port");
+  port_out = parse_int_in_range(port, 1, 4000000, "port");
 }
 
 /**
