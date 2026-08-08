@@ -235,12 +235,12 @@ void MAVConnInterface::apply_signing_config(bool sign_outgoing, uint8_t link_id,
   m_tx_signing.flags = sign_outgoing ? MAVLINK_SIGNING_FLAG_SIGN_OUTGOING : 0;
   m_tx_signing.link_id = link_id;
   m_tx_signing.timestamp = timestamp;
-  m_tx_signing.last_status = mavlink::MAVLINK_SIGNING_STATUS_NONE;
+  // m_tx_signing.last_status = mavlink::MAVLINK_SIGNING_STATUS_NONE;
 
   m_rx_signing.flags = sign_outgoing ? MAVLINK_SIGNING_FLAG_SIGN_OUTGOING : 0;
   m_rx_signing.link_id = link_id;
   m_rx_signing.timestamp = timestamp;
-  m_rx_signing.last_status = mavlink::MAVLINK_SIGNING_STATUS_NONE;
+  // m_rx_signing.last_status = mavlink::MAVLINK_SIGNING_STATUS_NONE;
 
   m_rx_signing_streams = {};
 

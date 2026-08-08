@@ -844,7 +844,7 @@ private:
   }
 
   void process_autopilot_version_normal(
-    mavlink::standard::msg::AUTOPILOT_VERSION & apv,
+    mavlink::common::msg::AUTOPILOT_VERSION & apv,
     uint8_t sysid, uint8_t compid)
   {
     char prefix[16];
@@ -872,7 +872,7 @@ private:
   }
 
   void process_autopilot_version_apm_quirk(
-    mavlink::standard::msg::AUTOPILOT_VERSION & apv,
+    mavlink::common::msg::AUTOPILOT_VERSION & apv,
     uint8_t sysid, uint8_t compid)
   {
     char prefix[16];
@@ -1101,7 +1101,7 @@ private:
 
   void handle_autopilot_version(
     const mavlink::mavlink_message_t * msg,
-    mavlink::standard::msg::AUTOPILOT_VERSION & apv,
+    mavlink::common::msg::AUTOPILOT_VERSION & apv,
     plugin::filter::SystemAndOk filter [[maybe_unused]])
   {
     // XXX(vooon): i assume that UAS no longer interested in other systems
@@ -1345,7 +1345,7 @@ private:
       cmdrq->command = enum_value(MAV_CMD::REQUEST_MESSAGE);
       cmdrq->confirmation = false;
       // Request a single AUTOPILOT_VERSION message from the target system.
-      cmdrq->param1 = mavlink::standard::msg::AUTOPILOT_VERSION::MSG_ID;
+      cmdrq->param1 = mavlink::common::msg::AUTOPILOT_VERSION::MSG_ID;
       cmdrq->param7 = 1.0;
 
       RCLCPP_DEBUG(

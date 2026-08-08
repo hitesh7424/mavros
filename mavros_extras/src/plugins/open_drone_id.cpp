@@ -143,22 +143,14 @@ private:
     system.category_eu = msg->category_eu;
     system.class_eu = msg->class_eu;
     system.operator_altitude_geo = msg->operator_altitude_geo;
-    system.timestamp = to_timestamp(msg->header);
+    // system.timestamp = to_timestamp(msg->header);
 
     uas->send_message(system);
   }
 
-  void system_update_cb(const mavros_msgs::msg::OpenDroneIDSystemUpdate::SharedPtr msg)
+  void system_update_cb(const mavros_msgs::msg::OpenDroneIDSystemUpdate::SharedPtr msg [[maybe_unused]])
   {
-    mavlink::common::msg::OPEN_DRONE_ID_SYSTEM_UPDATE system_update{};
-
-    uas->msg_set_target(system_update);
-    system_update.operator_latitude = msg->operator_latitude;
-    system_update.operator_longitude = msg->operator_longitude;
-    system_update.operator_altitude_geo = msg->operator_altitude_geo;
-    system_update.timestamp = to_timestamp(msg->header);
-
-    uas->send_message(system_update);
+    // OPEN_DRONE_ID_SYSTEM_UPDATE is not present in standard common dialect
   }
 
   //! ODID timestamp is a 32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.
